@@ -93,7 +93,7 @@ export default function RecordList() {
             <div  class="text-center mt-3" >
                   <div className="container ">
                     <div align="right">
-                      <h5>Search Record By Topic</h5>
+                      <h6>Search Record By Topic</h6>
                     
                     
                       <div class="input-group" style={{width:"350px"}} >
