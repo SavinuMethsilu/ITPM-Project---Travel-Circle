@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
- 
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
+
 const Record = (props) => (
  <tr>
    <td>{props.record.topic}</td>
@@ -24,6 +25,7 @@ export default function RecordList() {
  const [records, setRecords] = useState([]);
 
  const [serachItem,setserachItem] =useState([]);
+ const [data,setData]=useState([]);  // excel set data to download
  
  // This method fetches the records from the database.
  useEffect(() => {
@@ -38,6 +40,7 @@ export default function RecordList() {
  
      const records = await response.json();
      setRecords(records);
+     setData(records); // assign data
    }
  
    getRecords();
@@ -89,9 +92,9 @@ export default function RecordList() {
      <br/>
             <div  class="text-center mt-3" >
                   <div className="container ">
-                    <div align="left">
+                    <div align="right">
                       <h5>Search Record By Topic</h5>
-                    </div>
+                    
                     
                       <div class="input-group" style={{width:"350px"}} >
                         
@@ -105,10 +108,23 @@ export default function RecordList() {
                         />
                         
                       </div>
+                      </div>
                 </div> 
           </div>
+
      <br/>
-     <br/><br/><br/>
+     <br/>
+     <div align="left"> 
+       {/* //button */}
+              <ReactHTMLTableToExcel
+                className="btn btn-outline-success"
+                table="convertToExcel"    //table assignID
+                filename="Record Excel"
+                sheet="Sheet"
+                buttonText="Download record list"
+              />
+            </div>
+     <br/><br/>
      
     <center>
      <table className="table table-striped" style={{ backgroundColor:"Silver"}}>
@@ -129,16 +145,26 @@ export default function RecordList() {
     <br/>
     <br/>     
    </div>
-   
-        <table id >
+   <br/>
+         <table id="convertToExcel" style={{display:"none"}} > {/* // top assign ID */}
         <thead>
           <tr>
+            <th>#</th>
             <th>Topic</th>
             <th>Description</th>
             <th>Sub Category</th>
           </tr>
         </thead>
-        <tbody>{recordList()}</tbody>
+        <tbody>
+        {data.map((record,index)=>(                   //To map data assign in dataset
+                       <tr>
+                         <th scope="row">{index+1}</th>
+                           <td>{record.topic}</td>
+                           <td>{record.description}</td>
+                           <td>{record.sub_category}</td>
+                   </tr>  
+                ))}
+        </tbody>
 
       </table>
       
