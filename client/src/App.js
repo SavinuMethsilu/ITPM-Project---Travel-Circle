@@ -11,9 +11,6 @@ import Create from "./components/create";
  
 //vishmii
 
-import RecordList from "./components/recordListfeedback";
-import Edit from "./components/editfeedback";
-import Create from "./components/createfeedback";
 
 
 const App = () => {
@@ -24,6 +21,9 @@ const App = () => {
        <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
+
+ 
+
      </Routes>
    </div>
  );
