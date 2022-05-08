@@ -9,6 +9,13 @@ import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
  
+//vishmii
+
+import RecordList from "./components/recordListfeedback";
+import Edit from "./components/editfeedback";
+import Create from "./components/createfeedback";
+
+
 const App = () => {
  return (
    <div>
