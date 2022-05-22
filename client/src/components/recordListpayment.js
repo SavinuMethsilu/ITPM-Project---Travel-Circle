@@ -4,9 +4,11 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const Record = (props) => (
  <tr>
-   <td>{props.record.topic}</td>
-   <td>{props.record.description}</td>
-   <td>{props.record.sub_category}</td>
+   <td>{props.record.CardType}</td>
+   <td>{props.record.cardNo}</td>
+   <td>{props.record.month}</td>
+   <td>{props.record.year}</td>
+   <td>{props.record.cvn}</td>
    <td>
      <Link className="btn btn-warning" to={`/edit/${props.record._id}`}>Edit</Link> &nbsp;&nbsp;  |  &nbsp;&nbsp;  
      <button className="btn btn-danger"
@@ -87,20 +89,20 @@ export default function RecordList() {
 
      <br/>
      <br/>
-     <h3>Record List</h3>
+     <h3>Payment</h3>
      
      <br/>
             <div  class="text-center mt-3" >
                   <div className="container ">
                     <div align="right">
-                      <h6>Search Record By Topic</h6>
+                      <h5>Search Record By Card No</h5>
                     
                     
                       <div class="input-group" style={{width:"350px"}} >
                         
                         <input type="search" 
                         class="form-control rounded" 
-                        placeholder="Search topic" 
+                        placeholder="Search Card no" 
                         aria-label="Search" 
                         onChange={event=>{setserachItem(event.target.value)}} 
                         aria-describedby="search-addon" 
@@ -131,9 +133,11 @@ export default function RecordList() {
        
        <thead>
          <tr>
-           <th>Topic</th>
-           <th>Description Title</th>
-           <th>Sub Category</th>
+           <th>Card type</th>
+           <th>Card Number</th>
+           <th>Month</th>
+           <th>Year</th>
+           <th>CVN</th>
            <th>Action</th>
          </tr>
        </thead>
@@ -150,18 +154,22 @@ export default function RecordList() {
         <thead>
           <tr>
             <th>#</th>
-            <th>Topic</th>
-            <th>Description</th>
-            <th>Sub Category</th>
+            <th>Card type</th>
+           <th>Card Number</th>
+           <th>Month</th>
+           <th>Year</th>
+           <th>CVN</th>
           </tr>
         </thead>
         <tbody>
         {data.map((record,index)=>(                   //To map data assign in dataset
                        <tr>
                          <th scope="row">{index+1}</th>
-                           <td>{record.topic}</td>
-                           <td>{record.description}</td>
-                           <td>{record.sub_category}</td>
+                           <td>{record.CardType}</td>
+                           <td>{record.cardNo}</td>
+                           <td>{record.month}</td>
+                           <td>{record.year}</td>
+                           <td>{record.cvn}</td>
                    </tr>  
                 ))}
         </tbody>
